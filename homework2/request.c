@@ -62,7 +62,7 @@ char *request(char *url)
     /* receive the response */
     response = malloc(sizeof(char)*100000);
 
-    memset(response,0,sizeof(response));
+    //memset(response,0,sizeof(response));
     total = sizeof(response)-1;
     received = 0;
    // do {
