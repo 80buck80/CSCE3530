@@ -61,11 +61,12 @@ char *request(char *url)
 
     /* receive the response */
     response = malloc(sizeof(char)*100000);
+
     memset(response,0,sizeof(response));
     total = sizeof(response)-1;
     received = 0;
    // do {
-        bytes = read(sockfd,response+received,total-received);
+        bytes = read(sockfd, response, 100000);
       //  if (bytes < 0)
         //    error("ERROR reading response from socket");
     //    if (bytes == 0)
