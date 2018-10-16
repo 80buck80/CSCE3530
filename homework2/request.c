@@ -21,8 +21,8 @@ char *request(char *url)
     struct sockaddr_in serv_addr;
     int sockfd, bytes, sent, received, total;
     char message[1024];
-    char *response;
-
+    //char *response;
+    char response[100000];
 
 
     /* fill in the parameters */
@@ -60,9 +60,9 @@ char *request(char *url)
     } while (sent < total);
 
     /* receive the response */
-    response = malloc(sizeof(char)*100000);
+    //response = malloc(sizeof(char)*100000);
 
-    //memset(response,0,sizeof(response));
+    memset(response,0,sizeof(response));
     total = sizeof(response)-1;
     received = 0;
    // do {
