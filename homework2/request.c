@@ -28,7 +28,7 @@ char *request(char *url)
     /* fill in the parameters */
     sprintf(message,message_fmt,url);
     printf("Request Message: %s\n",message);
-    
+
     /* create the socket */
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0) error("ERROR opening socket");
@@ -60,7 +60,7 @@ char *request(char *url)
     } while (sent < total);
 
     /* receive the response */
-    response = malloc(sizeof(char)*10000);
+    response = malloc(sizeof(char)*100000);
     memset(response,0,sizeof(response));
     total = sizeof(response)-1;
     received = 0;
