@@ -21,8 +21,8 @@ char *request(char *url)
     struct sockaddr_in serv_addr;
     int requestSockFd, bytes, sent, received, total;
     char message[1024];
-    //char *response;
-    char response[100000];
+    char *response;
+    //char response[100000];
 
 
     /* fill in the parameters */
@@ -60,23 +60,23 @@ char *request(char *url)
     } while (sent < total);
 
     /* receive the response */
-    //response = malloc(sizeof(char)*100000);
+    response = malloc(sizeof(char)*100000);
 
     memset(response,0,sizeof(response));
     total = sizeof(response)-1;
     received = 0;
-   // do {
-        //bytes = read(requestSockFd, response, 100000);
-        bytes = recv(requestSockFd, response, 100000, 0);
-      //  if (bytes < 0)
-        //    error("ERROR reading response from socket");
-    //    if (bytes == 0)
-     //       break;
-  //      received+=bytes;
-//    } while (received < total);
+   do {
+        bytes = read(requestSockFd, response, 100000);
+        //bytes = recv(requestSockFd, response, 100000, 0);
+       if (bytes < 0)
+           error("ERROR reading response from socket");
+       if (bytes == 0)
+           break;
+       received+=bytes;
+   } while (received < total);
 
-//    if (received == total)
-//        error("ERROR storing complete response from socket");
+   if (received == total)
+       error("ERROR storing complete response from socket");
 
     /* close the socket */
     close(requestSockFd);
