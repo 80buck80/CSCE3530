@@ -19,7 +19,7 @@ char *request(char *url)
 
     struct hostent *server;
     struct sockaddr_in serv_addr;
-    int sockfd, bytes, sent, received, total;
+    int requestSockFd, bytes, sent, received, total;
     char message[1024];
     //char *response;
     char response[100000];
@@ -30,8 +30,8 @@ char *request(char *url)
     printf("Request Message: %s\n",message);
 
     /* create the socket */
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockfd < 0) error("ERROR opening socket");
+    requestSockFd = socket(AF_INET, SOCK_STREAM, 0);
+    if (requestSockFd < 0) error("ERROR opening socket");
 
     /* lookup the ip address */
     server = gethostbyname(host);
@@ -44,14 +44,14 @@ char *request(char *url)
     memcpy(&serv_addr.sin_addr.s_addr,server->h_addr,server->h_length);
 
     /* connect the socket */
-    if (connect(sockfd,(struct sockaddr *)&serv_addr,sizeof(serv_addr)) < 0)
+    if (connect(requestSockFd,(struct sockaddr *)&serv_addr,sizeof(serv_addr)) < 0)
         error("ERROR connecting");
 
     /* send the request */
     total = strlen(message);
     sent = 0;
     do {
-        bytes = write(sockfd,message+sent,total-sent);
+        bytes = write(requestSockFd,message+sent,total-sent);
         if (bytes < 0)
             error("ERROR writing message to socket");
         if (bytes == 0)
@@ -66,8 +66,8 @@ char *request(char *url)
     total = sizeof(response)-1;
     received = 0;
    // do {
-        //bytes = read(sockfd, response, 100000);
-        bytes = recv(sockfd, response, 100000, 0)
+        //bytes = read(requestSockFd, response, 100000);
+        bytes = recv(requestSockFd, response, 100000, 0)
       //  if (bytes < 0)
         //    error("ERROR reading response from socket");
     //    if (bytes == 0)
@@ -79,7 +79,7 @@ char *request(char *url)
 //        error("ERROR storing complete response from socket");
 
     /* close the socket */
-    close(sockfd);
+    close(requestSockFd);
 
     /* process response */
     printf("Response:\n%s\n",response);
