@@ -15,7 +15,7 @@ char *request(char *url)
     /* what are we going to send and where are we going to send it? */
     int portno =        80;
     char *host =        url;
-    char *message_fmt = "GET /%s HTTP/2.0\r\n\r\n";
+    char *message_fmt = "GET / HTTP/1.1\r\nHost:%s\r\n\r\n";
 
     struct hostent *server;
     struct sockaddr_in serv_addr;
@@ -51,7 +51,7 @@ char *request(char *url)
     total = strlen(message);
     sent = 0;
     do {
-        bytes = write(requestSockFd,message+sent,total-sent);
+        bytes = write(requestSockFd,message,total-sent);
         if (bytes < 0)
             error("ERROR writing message to socket");
         if (bytes == 0)
