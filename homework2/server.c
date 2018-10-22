@@ -56,6 +56,9 @@ int main(int argc, char *argv[])
         run = 1;
         while(run)
         {
+          printf("\nWaiting on message from client...\n")
+
+
           //Receiving the message from the client
           bzero(buffer,256);
           n = read(newsockfd,buffer,255);
@@ -71,7 +74,7 @@ int main(int argc, char *argv[])
             if(strcmp(buffer, "bye\n"))
             {
               request(buffer); //REQUEST THE SITE
-              printf("\n\n\n%s\n\n\n", "here");
+
 
 
             }
