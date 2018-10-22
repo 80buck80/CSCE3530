@@ -55,15 +55,19 @@ int main(int argc, char *argv[])
 		clilen=sizeof(cli_addr);
 		newsockfd = accept(sockfd,(struct sockaddr *) &cli_addr, &clilen);
 		if (newsockfd < 0)
-			//error(EXIT_FAILURE, 0, "ERROR on accept");
-      error("ERROR on accept");
+            error("ERROR on accept");
 
-      printf("\nClient is connected...\n");
+        printf("\nClient is connected...\n");
 
-      //create file to store requested site names
-      list = fopen("list.txt", "a+");
+        //create file to store requested site names
+        list = fopen("list.txt", "a+");
 
+        //set number of sites stored to zero
+        count = 0;
+
+        // set to run while until 0
         run = 1;
+
         while(run)
         {
           printf("\nWaiting on message from client...\n");
@@ -96,6 +100,10 @@ int main(int argc, char *argv[])
                     if(checkResponse(request(buffer)))
                     {
                         printf("\n\n\n YEP \n\n\n");
+                    }
+                    else
+                    {
+                        printf("\n\n\n NOPE \n\n\n");
                     }
 
                 }
