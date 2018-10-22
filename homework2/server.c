@@ -75,6 +75,10 @@ int main(int argc, char *argv[])
             {
               request(buffer); //REQUEST THE SITE
 
+              //Sending the message to the client
+              bzero(buffer,256);
+              sprintf(buffer, "Connection successfull");
+              n = write(newsockfd, buffer, strlen(buffer));
 
 
             }
