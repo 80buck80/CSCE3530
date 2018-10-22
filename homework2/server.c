@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
             if(strcmp(buffer, "bye\n"))
             {
               request(buffer); //REQUEST THE SITE
-              prints("%s\n", "here");
+              prints("\n\n\n%s\n\n\n", "here");
 
 
             }
