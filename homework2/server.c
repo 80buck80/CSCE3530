@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
 
             if(strcmp(buffer, "bye\n"))
             {
-              strcpy(buffer, request(buffer)); //REQUEST THE SITE
+              request(buffer); //REQUEST THE SITE
 
 
             }
