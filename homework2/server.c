@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 {
     int sockfd, newsockfd, portno, clilen, n, i, run, count;
    	struct sockaddr_in serv_addr, cli_addr;
-    char buffer[1000000];
+    char buffer[1000000], *returnedResponse;
 
     FILE *list;//File pointer
     FILE *site;//File pointer
@@ -95,11 +95,18 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
+                    returnedResponse = request(buffer);
                     //REQUEST THE SITE and
                     //check if return status is 200
-                    if(checkResponse(request(buffer)))
+                    if(checkResponse(returnedResponse))
                     {
-                        printf("\n\n\n YEP \n\n\n");
+                        //check if list is full
+                        if(count <= 5)
+                        {
+                            fprintf(list, "%s", buffer);
+                            site = fopen(buffer, w);
+                            fprintf(site, "%s", returnedResponse);
+                        }
                     }
                     else
                     {
