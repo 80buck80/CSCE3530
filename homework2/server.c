@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
       printf("\nClient is connected...\n");
 
       //create file to store requested site names
-      list = fopen("list.txt", "a+")
+      list = fopen("list.txt", "a+");
 
         run = 1;
         while(run)
