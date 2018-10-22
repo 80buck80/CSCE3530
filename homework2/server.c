@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
                         if(count <= 5)
                         {
                             fprintf(list, "%s", buffer);
-                            site = fopen(buffer, w);
+                            site = fopen(buffer, "w");
                             fprintf(site, "%s", returnedResponse);
                         }
                     }
