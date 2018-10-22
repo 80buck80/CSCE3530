@@ -8,6 +8,7 @@
 #include "request.h"
 
 
+
 void error(const char *msg) { perror(msg); exit(0); }
 
 char *request(char *url)

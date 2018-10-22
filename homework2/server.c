@@ -11,12 +11,18 @@
 #include <stdlib.h>
 
 #include "request.h"
+#include "siteCheck.h"
 
 int main(int argc, char *argv[])
 {
     int sockfd, newsockfd, portno, clilen, n, i, run, count;
    	struct sockaddr_in serv_addr, cli_addr;
-    char buffer[256];
+    char buffer[1000000];
+
+    FILE *list;//File pointer
+    FILE *site;//File pointer
+
+
 
     if(argc < 2)
 	{
@@ -53,6 +59,9 @@ int main(int argc, char *argv[])
 
       printf("\nClient is connected...\n");
 
+      //create file to store requested site names
+      list = fopen("list.txt", "w")
+
         run = 1;
         while(run)
         {
@@ -60,8 +69,8 @@ int main(int argc, char *argv[])
 
 
           //Receiving the message from the client
-          bzero(buffer,256);
-          n = read(newsockfd,buffer,255);
+          bzero(buffer,1000000);
+          n = read(newsockfd,buffer,1000000);
 
           if(n < 0)
               error("ERROR reading from socket");
@@ -73,10 +82,17 @@ int main(int argc, char *argv[])
 
             if(strcmp(buffer, "bye\n"))
             {
+              //Check list to see if file exists
+
+              //If yes:
+
+
+
+              //If no:
               request(buffer); //REQUEST THE SITE
 
               //Sending the message to the client
-              bzero(buffer,256);
+              bzero(buffer,1000000);
               sprintf(buffer, "Connection successfull");
               n = write(newsockfd, buffer, strlen(buffer));
 
@@ -85,7 +101,7 @@ int main(int argc, char *argv[])
             else
             {
               //Sending the message to the client
-              bzero(buffer,256);
+              bzero(buffer,1000000);
               sprintf(buffer, "Closing the connection, bye!");
               n = write(newsockfd, buffer, strlen(buffer));
 
