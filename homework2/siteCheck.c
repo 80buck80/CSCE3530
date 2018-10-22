@@ -7,9 +7,39 @@
 #include "siteCheck.h"
 
 
+
+bool checkResponse(char *response)
+{
+    char *ok;
+
+    ok = strstr(response, "200");
+
+    if(ok)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+
 bool checkList(FILE *siteList, char *siteName)
 {
 
+    char temp[512];
 
-    if(strcmp(buffer, "bye\n"))
+    while(fgets(temp, 512, siteList))
+    {
+        if(strstr(temp, siteName))
+        {
+            return 1
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
 }

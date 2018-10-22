@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
       printf("\nClient is connected...\n");
 
       //create file to store requested site names
-      list = fopen("list.txt", "w")
+      list = fopen("list.txt", "a+")
 
         run = 1;
         while(run)
@@ -82,14 +82,19 @@ int main(int argc, char *argv[])
 
             if(strcmp(buffer, "bye\n"))
             {
-              //Check list to see if file exists
 
+              //Check list to see if file exists
+              if(checkList(list, buffer))
+              {
+                  printf("yep");
+              }
               //If yes:
 
 
 
               //If no:
               request(buffer); //REQUEST THE SITE
+              //Check if return status is 200
 
               //Sending the message to the client
               bzero(buffer,1000000);
