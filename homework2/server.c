@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
         run = 1;
         while(run)
         {
-          printf("\nWaiting on message from client...\n")
+          printf("\nWaiting on message from client...\n");
 
 
           //Receiving the message from the client
