@@ -66,7 +66,7 @@ char *request(char *url)
     total = sizeof(response)-1;
     received = 0;
    do {
-        bytes = read(requestSockFd, response, 100000);
+        bytes = read(requestSockFd, response, 1000000);
         //bytes = recv(requestSockFd, response, 100000, 0);
        if (bytes < 0)
            error("ERROR reading response from socket");
