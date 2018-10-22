@@ -34,7 +34,7 @@ bool checkList(FILE *siteList, char *siteName)
     {
         if(strstr(temp, siteName))
         {
-            return 1
+            return 1;
         }
         else
         {
