@@ -83,7 +83,7 @@ char *request(char *url)
     close(requestSockFd);
 
     /* process response */
-    printf("Response:\n%s\n",response);
+    //printf("Response:\n%s\n",response);
 
     return response;
 }
