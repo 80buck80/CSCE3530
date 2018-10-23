@@ -91,6 +91,8 @@ int main(int argc, char *argv[])
                 //Check list to see if site is in the list
                 if(checkList(list, buffer))
                 {
+                    printf("\n\nSENDING CACHED FILE\n\n");
+
                     //open file to read from
                     site = fopen(buffer, "r");
 
@@ -99,6 +101,8 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
+                    printf("\n\nSITE NOT CACHED, SENDING REQUEST TO %s\n\n", buffer);
+
                     //REQUEST THE SITE
                     returnedResponse = request(buffer);
 
