@@ -59,9 +59,6 @@ int main(int argc, char *argv[])
 
         printf("\nClient is connected...\n");
 
-        //create file to store requested site names
-        list = fopen("list.txt", "a+");
-
         //set number of sites stored to zero
         count = 0;
 
@@ -88,6 +85,9 @@ int main(int argc, char *argv[])
             if(strcmp(buffer, "bye\n"))
             {
 
+                //create/open file to store requested site names
+                list = fopen("list.txt", "a+");
+
                 //Check list to see if site is in the list
                 if(checkList(list, buffer))
                 {
@@ -113,14 +113,14 @@ int main(int argc, char *argv[])
                         if(count <= 5)
                         {
                             //add requested site to list.txt
-                            fprintf(list, "%s", buffer);
+                            fprintf(list, "%s\n", buffer);
 
                             //  create file to store site information
                             site = fopen(buffer, "w");
                             //  write site information to site
                             fprintf(site, "%s", returnedResponse);
 
-                            //  close file pointer
+                            //  close file pointer to site
                             fclose(site);
 
                         }
@@ -135,6 +135,9 @@ int main(int argc, char *argv[])
                 bzero(buffer,1000000);
                 //sprintf(buffer, "Connection successfull");
                 n = write(newsockfd, returnedResponse, strlen(returnedResponse));
+
+                //  close file pointer to list
+                fclose(list);
 
             }
             else
