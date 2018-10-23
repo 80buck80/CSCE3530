@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
                     site = fopen(buffer, "r");
 
                     //Send cached data to client
-                    fscanf(site, "%s", returnedResponse)
+                    fscanf(site, "%s", returnedResponse);
                 }
                 else
                 {
