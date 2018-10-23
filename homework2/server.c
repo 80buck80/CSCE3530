@@ -110,18 +110,10 @@ int main(int argc, char *argv[])
                     if(checkResponse(returnedResponse))
                     {
                         //check if list is full
-                        if(count <= 5)
+                        if(count <= 1)
                         {
                             //add requested site to list.txt
                             fprintf(list, "%s\n", buffer);
-
-                            //  create file to store site information
-                            site = fopen(buffer, "w");
-                            //  write site information to site
-                            fprintf(site, "%s", returnedResponse);
-
-                            //  close file pointer to site
-                            fclose(site);
 
                             //  increment number of sites in list
                             count++;
@@ -131,6 +123,14 @@ int main(int argc, char *argv[])
                             replaceOldestSite(list, buffer);
                         }
 
+                        //  create file to store site information
+                        site = fopen(buffer, "w");
+
+                        //  write site information to site
+                        fprintf(site, "%s", returnedResponse);
+
+                        //  close file pointer to site
+                        fclose(site);
                     }
 
                 }
