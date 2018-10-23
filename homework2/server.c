@@ -91,7 +91,11 @@ int main(int argc, char *argv[])
                 //Check list to see if site is in the list
                 if(checkList(list, buffer))
                 {
+                    //open file to read from
+                    site = fopen(buffer, "r");
+
                     //Send cached data to client
+                    fscanf(site, "%s", returnedResponse)
                 }
                 else
                 {
@@ -112,10 +116,9 @@ int main(int argc, char *argv[])
                             //  write site information to site
                             fprintf(site, "%s", returnedResponse);
 
-                            //Send site to client
-                            bzero(buffer,1000000);
-                            //sprintf(buffer, "Connection successfull");
-                            n = write(newsockfd, returnedResponse, strlen(returnedResponse));
+                            //  close file pointer
+                            fclose(site);
+
                         }
                     }
                     else
@@ -124,12 +127,10 @@ int main(int argc, char *argv[])
                     }
 
                 }
-
-
-
-
-
-
+                //Send site to client
+                bzero(buffer,1000000);
+                //sprintf(buffer, "Connection successfull");
+                n = write(newsockfd, returnedResponse, strlen(returnedResponse));
 
             }
             else
