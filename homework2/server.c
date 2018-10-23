@@ -95,8 +95,9 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
+                    //REQUEST THE SITE
                     returnedResponse = request(buffer);
-                    //REQUEST THE SITE and
+
                     //check if return status is 200
                     if(checkResponse(returnedResponse))
                     {
@@ -108,6 +109,9 @@ int main(int argc, char *argv[])
                             fprintf(site, "%s", returnedResponse);
 
                             //Send site to client
+                            bzero(buffer,1000000);
+                            //sprintf(buffer, "Connection successfull");
+                            n = write(newsockfd, returnedResponse, strlen(returnedResponse));
                         }
                     }
                     else
@@ -121,10 +125,6 @@ int main(int argc, char *argv[])
 
 
 
-              //Sending the message to the client
-              bzero(buffer,1000000);
-              sprintf(buffer, "Connection successfull");
-              n = write(newsockfd, buffer, strlen(buffer));
 
 
             }
