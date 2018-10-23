@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
             error(EXIT_FAILURE, 0, "ERROR reading from socket");
         else
         {
-            printf("Server has sent: %s\n", buffer);
+            printf("\nServer has sent: \n%s\n", buffer);
         }
     }
 	//Closing the connection
