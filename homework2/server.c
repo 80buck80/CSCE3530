@@ -123,17 +123,19 @@ int main(int argc, char *argv[])
                             //  close file pointer to site
                             fclose(site);
 
+                            //  increment number of sites in list
+                            count++;
                         }
-                    }
-                    else
-                    {
-                        printf("\n\n\n NOPE \n\n\n");
+                        else
+                        {
+                            replaceOldestSite(list, buffer);
+                        }
+
                     }
 
                 }
+
                 //Send site to client
-                bzero(buffer,1000000);
-                //sprintf(buffer, "Connection successfull");
                 n = write(newsockfd, returnedResponse, strlen(returnedResponse));
 
                 //  close file pointer to list
