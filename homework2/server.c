@@ -104,8 +104,12 @@ int main(int argc, char *argv[])
                         //check if list is full
                         if(count <= 5)
                         {
+                            //add requested site to list.txt
                             fprintf(list, "%s", buffer);
+
+                            //  create file to store site information
                             site = fopen(buffer, "w");
+                            //  write site information to site
                             fprintf(site, "%s", returnedResponse);
 
                             //Send site to client
