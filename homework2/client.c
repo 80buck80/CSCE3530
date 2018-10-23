@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 	int sockfd, portno, n, i, run;
 	struct sockaddr_in serv_addr;
 	struct hostent *server;
-	char buffer[256];
+	char buffer[1000000];
 
 	if (argc < 2)
 	{
@@ -51,8 +51,8 @@ int main(int argc, char *argv[])
     {
         //Sending the message to the server
         printf("\nEnter client's message: ");
-        bzero(buffer,256);
-        fgets(buffer, 256, stdin);
+        bzero(buffer,1000000);
+        fgets(buffer, 1000000, stdin);
 
         n = write(sockfd, buffer, strlen(buffer));
         if (n < 0)
@@ -73,8 +73,8 @@ int main(int argc, char *argv[])
         }
 
         //Receiving the message from the server
-        bzero(buffer,256);
-        n = read(sockfd, buffer, 255);
+        bzero(buffer,1000000);
+        n = read(sockfd, buffer, 1000000);
         if (n < 0)
             error(EXIT_FAILURE, 0, "ERROR reading from socket");
         else
