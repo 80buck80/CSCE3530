@@ -106,6 +106,8 @@ int main(int argc, char *argv[])
                             fprintf(list, "%s", buffer);
                             site = fopen(buffer, "w");
                             fprintf(site, "%s", returnedResponse);
+
+                            //Send site to client
                         }
                     }
                     else
