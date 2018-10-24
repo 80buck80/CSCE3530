@@ -58,9 +58,12 @@ void replaceOldestSite(FILE *siteList, char *siteName)
 
     while(fgets(temp, 512, siteList))
     {
+        printf("1\n", );
         strcpy(siteArray[i], temp);
         i++;
+        printf("2\n", );
         printf("%s\n", siteArray[i]);
+        printf("3\n", );
     }
 
     //strcpy(siteArray[0], siteName);
