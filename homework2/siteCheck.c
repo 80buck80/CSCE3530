@@ -56,15 +56,15 @@ void replaceOldestSite(FILE *siteList, char *siteName)
 
     i = 0;
 
-    while(fscanf(siteList, "%s", temp) == 1)
+    while(fscanf(siteList, "%s", siteArray[i]) == 1)
     {
-        printf("TEMP: %s\n", temp);
-        printf("1\n");
-        siteArray[i] = temp;
+        printf("ARRAY %d: %s\n", i, temp);
+        //printf("1\n");
+
         i++;
-        printf("2\n");
-        puts(siteArray[i]);
-        printf("3\n");
+        //printf("2\n");
+
+        //printf("3\n");
     }
 
     //strcpy(siteArray[0], siteName);
