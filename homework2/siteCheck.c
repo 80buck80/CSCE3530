@@ -69,11 +69,11 @@ void replaceOldestSite(FILE *siteList, char *siteName)
 
     puts(siteArray[0]);
 
-    //siteList = fopen("list.txt", "w");
+    siteList = fopen("list.txt", "w");
 
-    // for(i = 0; i < 1; i++)
-    // {
-    //     fprintf(siteList, "%s\n", siteArray[i]);
-    // }
+    for(i = 0; i < 1; i++)
+    {
+        fprintf(siteList, "%s\n", siteArray[i]);
+    }
 
 }
