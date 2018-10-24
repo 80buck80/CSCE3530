@@ -110,7 +110,7 @@ int main(int argc, char *argv[])
                     if(checkResponse(returnedResponse))
                     {
                         //check if list is full
-                        if(count < 1)
+                        if(count < 5)
                         {
                             //add requested site to list.txt
                             fprintf(list, "%s\n", buffer);

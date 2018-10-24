@@ -71,7 +71,7 @@ void replaceOldestSite(FILE *siteList, char *siteName)
 
     siteList = fopen("list.txt", "w");
 
-    for(i = 0; i < 1; i++)
+    for(i = 0; i < 5; i++)
     {
         fprintf(siteList, "%s\n", siteArray[i]);
     }
