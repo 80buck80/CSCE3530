@@ -63,7 +63,7 @@ void replaceOldestSite(FILE *siteList, char *siteName)
         siteArray[i] = temp;
         i++;
         printf("2\n");
-        printf("%s\n", siteArray[i]);
+        puts(siteArray[i]);
         printf("3\n");
     }
 
