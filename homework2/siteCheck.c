@@ -56,7 +56,7 @@ void replaceOldestSite(FILE *siteList, char *siteName)
 
     i = 0;
 
-    while(fgets(temp, 512, siteList))
+    while(fscanf(siteList, "%s", temp) == 1)
     {
         printf("TEMP: %s\n", temp);
         printf("1\n");
