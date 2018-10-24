@@ -49,7 +49,7 @@ bool checkList(FILE *siteList, char *siteName)
 
 void replaceOldestSite(FILE *siteList, char *siteName)
 {
-    char *siteArray[4];
+    char siteArray[5][512];
     char temp[512];
     int i;
     rewind(siteList);
