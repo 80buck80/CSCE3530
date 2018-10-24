@@ -65,7 +65,7 @@ void replaceOldestSite(FILE *siteList, char *siteName)
 
     }
 
-    siteArray[0] = siteName;
+    strcpy(siteArray[0], siteName);
 
     puts(siteArray[0]);
 
