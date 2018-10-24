@@ -60,15 +60,16 @@ void replaceOldestSite(FILE *siteList, char *siteName)
     {
         strcpy(siteArray[i], temp);
         i++;
+        printf("%s\n", siteArray[i]);
     }
 
-    strcpy(siteArray[0], siteName);
+    //strcpy(siteArray[0], siteName);
 
-    siteList = fopen("list.txt", "w");
+    //siteList = fopen("list.txt", "w");
 
-    for(i = 0; i < 1; i++)
-    {
-        fprintf(siteList, "%s\n", siteArray[i]);
-    }
+    // for(i = 0; i < 1; i++)
+    // {
+    //     fprintf(siteList, "%s\n", siteArray[i]);
+    // }
 
 }
