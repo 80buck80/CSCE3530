@@ -144,6 +144,8 @@ int main(int argc, char *argv[])
             }
             else
             {
+              fclose(list);
+              
               //Sending the message to the client
               bzero(buffer,1000000);
               sprintf(buffer, "Closing the connection, bye!");
