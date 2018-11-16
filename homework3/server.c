@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
         // {
         //     die("recvfrom()");
         // }
-        if ((recv_len = recvfrom(s, temp, sizeof(temp), 0, (struct sockaddr *) &si_other, &slen)) == -1)
+        if ((recv_len = recvfrom(s, &temp, sizeof(temp), 0, (struct sockaddr *) &si_other, &slen)) == -1)
         {
             die("recvfrom()");
         }
