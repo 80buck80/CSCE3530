@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
     // {
     //     die("sendto()");
     // }
-    if (sendto(s, (struct DHCPRequest*)&request, sizeof(request), 0 , (struct sockaddr *) &si_other, slen)==-1)
+    if (sendto(s, (struct DHCPRequest*)&request, sizeof(DHCPRequest), 0 , (struct sockaddr *) &si_other, slen)==-1)
     {
         die("sendto()");
     }
