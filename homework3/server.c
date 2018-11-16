@@ -109,7 +109,7 @@ char* getIP(int *count)
     while(fscanf(fptr, "%s", ipArray[i]) == 1)
     {
 
-        printf("IP: %s\n", siteArray[i]);
+        printf("IP: %s\n", ipArray[i]);
 
         i++;
 
