@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
         //printf("Received packet from %s, port number:%d\n", inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port));
         printf("Client has sent: \n%s\n", buf);
 
-        ip = getIP(ipCount);
+        ip = getIP(&ipCount);
 
         printf("Chosen IP Address: \n%s\n", ip);
 
@@ -95,13 +95,13 @@ char* getIP(int *count)
     FILE *fptr;  //  File pointer
 
     //Initialize ipArray
-    for(i = 0; i < 10 : i++)
-    {
-      ipArray[i] = NULL;
-    }
+    // for(i = 0; i < 10 ; i++)
+    // {
+    //   ipArray[i] = NULL;
+    // }
 
     //Open the ip.txt file
-    fptr = fopen("ip.txt" "r");
+    fptr = fopen("ip.txt", "r");
 
     i = 0;
 
@@ -122,9 +122,9 @@ char* getIP(int *count)
     fptr = fopen("ip.txt", "w+");
 
     //Write IPs to file
-    for(i = 1; i < count; i++)
+    for(i = 1; i < *count; i++)
     {
-        fprintf(s, "%s\n", ipArray[i]);
+        fprintf(fptr, "%s\n", ipArray[i]);
     }
 
     //Close file pointer to ip.txt
