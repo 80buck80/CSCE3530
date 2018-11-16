@@ -74,6 +74,7 @@ int main(int argc, char *argv[])
     // sprintf(message, dhcpDiscover, ip, id);
     struct DHCPRequest request = {"0.0.0.0", rand() % 100 + 1, -1};
 
+    printf("Client Struct: \n%s\n%d\n", request.yiaddr, request.id);
 
     // Send message to server
     // if (sendto(s, message, strlen(message) , 0 , (struct sockaddr *) &si_other, slen)==-1)
