@@ -16,11 +16,13 @@ void die(char *s)
     exit(1);
 }
 
+char* getIP(int *count)
+
 int main(int argc, char *argv[])
 {
     struct sockaddr_in si_me, si_other;
 
-    int s, i, slen = sizeof(si_other) , recv_len, portno;
+    int s, i, slen = sizeof(si_other) , recv_len, portno, ipCount = 10;
     char buf[BUFLEN], message[1024];
 
     //Server Response String Template
@@ -77,4 +79,51 @@ int main(int argc, char *argv[])
 
     close(s);
     return 0;
+}
+
+char* getIP(int *count)
+{
+    char ipArray[10][512]; //  Holds ip addresses read in from ip.txt
+    int i; //  Counter
+    FILE *fptr;  //  File pointer
+
+    //Initialize ipArray
+    for(i = 0; i < 10 : i++)
+    {
+      ipArray[i] = NULL;
+    }
+
+    //Open the ip.txt file
+    fptr = fopen("ip.txt" "r");
+
+    i = 0;
+
+    //Read in ip addresses
+    while(fscanf(fptr, "%s", ipArray[i]) == 1)
+    {
+
+        printf("IP: %s\n", siteArray[i]);
+
+        i++;
+
+    }
+
+    //Close file pointer to ip.txt
+    fclose(fptr);
+
+    //Open and empty ip.txt
+    fptr = fopen("ip.txt", "w+");
+
+    //Write IPs to file
+    for(i = 1; i < count; i++)
+    {
+        fprintf(s, "%s\n", ipArray[i]);
+    }
+
+    //Close file pointer to ip.txt
+    fclose(fptr);
+
+    *count--;//Decrement number of ip addresses left
+
+    return ipArray[0]; // Return selected IP address
 }

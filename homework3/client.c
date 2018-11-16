@@ -55,8 +55,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    // Sending the message to the server
-    printf("Looking for DHCP server...");
+    printf("Looking for DHCP server...\n\n");
 
     // dhcpDiscover:
     // Set inital ip to 0.0.0.0
