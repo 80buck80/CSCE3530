@@ -91,6 +91,7 @@ int main(int argc, char *argv[])
 char* getIP(int *count)
 {
     char ipArray[10][512]; //  Holds ip addresses read in from ip.txt
+    char *ip;
     int i; //  Counter
     FILE *fptr;  //  File pointer
 
@@ -132,5 +133,7 @@ char* getIP(int *count)
 
     *count--;//Decrement number of ip addresses left
 
-    return ipArray[0]; // Return selected IP address
+    ip = ipArray[0];
+
+    return ip; // Return selected IP address
 }
