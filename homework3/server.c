@@ -23,6 +23,9 @@ int main(int argc, char *argv[])
     int s, i, slen = sizeof(si_other) , recv_len, portno;
     char buf[BUFLEN], message[1024];
 
+    //Server Response String Template
+    char *dhcpRespose = "yiaddr: %s\nTransaction ID: %d\nLifetime: 3600 secs";
+
     //create a UDP socket
     if ((s=socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == -1)
     {

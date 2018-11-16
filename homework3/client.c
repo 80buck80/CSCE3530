@@ -17,12 +17,24 @@ void die(char *s)
     exit(1);
 }
 
+
+
 int main(int argc, char *argv[])
 {
     struct sockaddr_in si_other;
     int s, i, slen=sizeof(si_other), portno;
     char buf[BUFLEN];
     char message[BUFLEN];
+
+    //Client IP and ID variables
+    char *ip;
+    int id;
+
+    //Client IP Request String Templates
+    char *dhcpDiscover = "yiaddr: %s\nTransaction ID: %d\n";
+    char *dhcpRequest =  "yiaddr: %s\nTransaction ID: %d\nLifetime: 3600 secs";
+
+
 
     system("clear");
     printf("...This is UDP client...\n\n");
@@ -44,8 +56,18 @@ int main(int argc, char *argv[])
     }
 
     // Sending the message to the server
-    printf("Enter client's message : ");
-    gets(message);
+    printf("Looking for DHCP server...");
+
+    // dhcpDiscover:
+    // Set inital ip to 0.0.0.0
+    ip = "0.0.0.0";
+    // Generate Random Number for ID
+    id = rand() % 100 + 1;
+    //Populate Discover Template into message
+    sprintf(message, dhcpDiscover, ip, id);
+
+
+    // Send message to server
     if (sendto(s, message, strlen(message) , 0 , (struct sockaddr *) &si_other, slen)==-1)
     {
         die("sendto()");
