@@ -8,7 +8,7 @@
 #include "siteCheck.h"
 
 
-
+//checks the response of the HTTP request
 bool checkResponse(char *response)
 {
     char *ok;
@@ -25,7 +25,7 @@ bool checkResponse(char *response)
     }
 }
 
-
+//Looks to see if the site is already cached
 bool checkList(FILE *siteList, char *siteName)
 {
 
@@ -47,6 +47,8 @@ bool checkList(FILE *siteList, char *siteName)
 
 }
 
+
+//Replaces the oldest cached site in files.txt
 void replaceOldestSite(FILE *siteList, char *siteName)
 {
     char siteArray[5][512];
