@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     char buf[BUFLEN], message[1024];
 
     //Server IP and ID variables
-    // char *ip;
+    char *ip;
     // int id;
     // //Server Response String Template
     // char *dhcpRespose = "yiaddr: %s\nTransaction ID: %d\nLifetime: 3600 secs";
@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
         //printf("Received packet from %s, port number:%d\n", inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port));
         //printf("Client has sent: \n%s\n", buf);
         printf("Client has sent: \n%s\n%d\n", temp->yiaddr, temp->id);
-        
+
         ip = getIP(&ipCount);
 
         printf("Chosen IP Address: \n%s\n", ip);
