@@ -16,7 +16,7 @@ void die(char *s)
     exit(1);
 }
 
-char* getIP(int *count)
+char* getIP(int *count);
 
 int main(int argc, char *argv[])
 {
