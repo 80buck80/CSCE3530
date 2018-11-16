@@ -25,6 +25,9 @@ int main(int argc, char *argv[])
     int s, i, slen = sizeof(si_other) , recv_len, portno, ipCount = 10;
     char buf[BUFLEN], message[1024];
 
+    //Server IP and ID variables
+    char *ip;
+    int id;
     //Server Response String Template
     char *dhcpRespose = "yiaddr: %s\nTransaction ID: %d\nLifetime: 3600 secs";
 
@@ -52,7 +55,7 @@ int main(int argc, char *argv[])
     printf("...This is UDP server...\n\n");
 
     //keep listening for data
-    while(1)
+    while(ipCount != 0)
     {
         printf("Waiting for client's message...\n\n");
         fflush(stdout);
@@ -67,10 +70,14 @@ int main(int argc, char *argv[])
         //printf("Received packet from %s, port number:%d\n", inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port));
         printf("Client has sent: \n%s\n", buf);
 
+        ip = getIP(ipCount);
+
+        printf("Chosen IP Address: \n%s\n", ip);
+
         //Sending reply to the client
-	bzero(message, 1024);
-	printf("Enter server's message:");
-	gets(message);
+	      bzero(message, 1024);
+	      printf("Enter server's message:");
+	      gets(message);
         if (sendto(s, message, strlen(message), 0, (struct sockaddr*) &si_other, slen) == -1)
         {
             die("sendto()");
