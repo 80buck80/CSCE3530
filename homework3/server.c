@@ -18,6 +18,13 @@ void die(char *s)
 
 char* getIP(int *count);
 
+struct DHCPResponse
+{
+  char* yiaddr;
+  int id;
+  int lifetime;
+};
+
 int main(int argc, char *argv[])
 {
     struct sockaddr_in si_me, si_other;
@@ -26,10 +33,11 @@ int main(int argc, char *argv[])
     char buf[BUFLEN], message[1024];
 
     //Server IP and ID variables
-    char *ip;
-    int id;
-    //Server Response String Template
-    char *dhcpRespose = "yiaddr: %s\nTransaction ID: %d\nLifetime: 3600 secs";
+    // char *ip;
+    // int id;
+    // //Server Response String Template
+    // char *dhcpRespose = "yiaddr: %s\nTransaction ID: %d\nLifetime: 3600 secs";
+    struct DHCPResponse *temp = malloc(sizeof(struct DHCPResponse));
 
     //create a UDP socket
     if ((s=socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == -1)
@@ -61,15 +69,20 @@ int main(int argc, char *argv[])
         fflush(stdout);
 
         //Receiving data from client
-        if ((recv_len = recvfrom(s, buf, BUFLEN, 0, (struct sockaddr *) &si_other, &slen)) == -1)
+        // if ((recv_len = recvfrom(s, buf, BUFLEN, 0, (struct sockaddr *) &si_other, &slen)) == -1)
+        // {
+        //     die("recvfrom()");
+        // }
+        if ((recv_len = recvfrom(s, temp, sizeof(temp), 0, (struct sockaddr *) &si_other, &slen)) == -1)
         {
             die("recvfrom()");
         }
 
         //print details of the client/peer and the data received
         //printf("Received packet from %s, port number:%d\n", inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port));
-        printf("Client has sent: \n%s\n", buf);
-
+        //printf("Client has sent: \n%s\n", buf);
+        printf("Client has sent: \n%s\n%d\n", temp->yiaddr, temp->id);
+        
         ip = getIP(&ipCount);
 
         printf("Chosen IP Address: \n%s\n", ip);
