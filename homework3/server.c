@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 
     //Server IP and ID variables
     char *ip;
-    id id;
+    int id;
     // Token variable used when splitting strings
     char *token;
     char clientMessage[3][32];
