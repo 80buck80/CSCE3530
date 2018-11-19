@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     int id;
     // Token variable used when splitting strings
     char *token;
-    char *clientMessage[3][32];
+    char clientMessage[3][32];
     //Server Response String Template
     char *dhcpRespose = "yiaddr: %s\nTransaction ID: %d\nLifetime: 3600 secs";
 
@@ -78,8 +78,8 @@ int main(int argc, char *argv[])
         while (token != NULL)
         {
           printf("%s\n", token);
-          //clientMessage[i] = token;
-          //i++;
+          clientMessage[i] = token;
+          i++;
           token = strtok(NULL, "\n");
 
         }
@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
         printf("\nClient Message:\n");
         for(i = 0; i < 3; i ++)
         {
-        //  printf("%s\n", clientMessage[i]);
+          printf("%s\n", clientMessage[i]);
         }
 
 
