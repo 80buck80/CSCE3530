@@ -17,7 +17,7 @@ void die(char *s)
 }
 
 char* getIP(int *count);
-void parseClient(char *message, char arr[]);
+void parseClient(char *message, char (*arr)[32]);
 
 int main(int argc, char *argv[])
 {
@@ -151,7 +151,7 @@ char* getIP(int *count)
     return ip; // Return selected IP address
 }
 
-void parseClient(char *message, char arr[])
+void parseClient(char *message, char (*arr)[32])
 {
   char *token = strtok(message, "\n");
   int i = 0;
