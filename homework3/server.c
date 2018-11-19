@@ -78,8 +78,10 @@ int main(int argc, char *argv[])
         while (token != NULL)
         {
           printf("%s\n", token);
-          clientMessage[i] = token;
+          //clientMessage[i] = token;
+          //i++;
           token = strtok(NULL, "\n");
+
         }
 
         for(i = 0; i < 3; i ++)
