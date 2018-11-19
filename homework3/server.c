@@ -74,7 +74,16 @@ int main(int argc, char *argv[])
 
         //print details of the client/peer and the data received
         //printf("Received packet from %s, port number:%d\n", inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port));
-        parseClient(buf, &clientMessage);
+        token = strtok(message, "\n");
+        i = 0;
+        while (token != NULL)
+        {
+          printf("%s\n", token);
+          strcpy(clientMessage[i], token);
+          i++;
+          token = strtok(NULL, "\n");
+
+        }
 
         printf("\nClient Message:\n");
         for(i = 0; i < 3; i ++)
@@ -149,19 +158,4 @@ char* getIP(int *count)
     ip = ipArray[0];
 
     return ip; // Return selected IP address
-}
-
-void parseClient(char *message, char (*arr)[32])
-{
-  char *token = strtok(message, "\n");
-  int i = 0;
-  while (token != NULL)
-  {
-    printf("%s\n", token);
-    strcpy(arr[i], token);
-    i++;
-    token = strtok(NULL, "\n");
-
-  }
-
 }
