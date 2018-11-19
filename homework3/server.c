@@ -80,7 +80,6 @@ int main(int argc, char *argv[])
         i = 0;
         while (token != NULL)
         {
-          printf("%s\n", token);
           strcpy(clientMessage[i], token);
           i++;
           token = strtok(NULL, "\n");
