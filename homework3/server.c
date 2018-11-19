@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 
     //Server IP and ID variables
     char *ip;
-    int id;
+    id id;
     // Token variable used when splitting strings
     char *token;
     char clientMessage[3][32];
@@ -84,6 +84,7 @@ int main(int argc, char *argv[])
 
         }
 
+        id = atoi(clientMessage[1]);
         printf("\nClient's message:\n");
         printf("yiaddr: %s\nTransaction ID: %s\n", clientMessage[0], clientMessage[1]);
 
@@ -127,11 +128,8 @@ char* getIP(int *count)
     //Read in ip addresses
     while(fscanf(fptr, "%s", ipArray[i]) == 1)
     {
-
-        printf("IP: %s\n", ipArray[i]);
-
+        //printf("IP: %s\n", ipArray[i]);
         i++;
-
     }
 
     //Close file pointer to ip.txt
