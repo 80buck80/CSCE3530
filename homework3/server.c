@@ -104,6 +104,8 @@ int main(int argc, char *argv[])
         strcpy(message, "\n");
         strcat(message, "3600\n");
 
+        printf("\nCATED MESSAGE: %s\n", message);
+
 
 
 	      printf("\nSending Client an IP offer:\n");
