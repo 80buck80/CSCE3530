@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     int id;
     // Token variable used when splitting strings
     char *token;
-    char *clientMessage[3];
+    char clientMessage[3][32];
     //Server Response String Template
     char *dhcpRespose = "yiaddr: %s\nTransaction ID: %d\nLifetime: 3600 secs";
 
