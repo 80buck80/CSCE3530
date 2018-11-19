@@ -84,10 +84,10 @@ int main(int argc, char *argv[])
 
         }
 
+        printf("\nClient Message:\n");
         for(i = 0; i < 3; i ++)
         {
-          printf("\nClient Message:\n");
-          printf("%s\n", clientMessage[i]);
+        //  printf("%s\n", clientMessage[i]);
         }
 
 
