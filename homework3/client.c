@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
     }
 
     printf("\nServer IP Offer:\n");
-    printf("yiaddr: %s\nTransaction ID: %s\nLifetime:", serverMessage[0], serverMessage[1], serverMessage[2]);
+    printf("yiaddr: %s\nTransaction ID: %s\nLifetime: %s\n", serverMessage[0], serverMessage[1], serverMessage[2]);
 
     close(s);
     return 0;
