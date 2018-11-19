@@ -17,15 +17,6 @@ void die(char *s)
     exit(1);
 }
 
-struct DHCPRequest
-{
-  char* yiaddr;
-  int id;
-  int lifetime;
-};
-
-
-
 int main(int argc, char *argv[])
 {
     struct sockaddr_in si_other;
@@ -33,13 +24,13 @@ int main(int argc, char *argv[])
     char buf[BUFLEN];
     char message[BUFLEN];
 
-    //Client IP and ID variables
-    // char *ip;
-    // int id;
-    //
-    // //Client IP Request String Templates
-    // char *dhcpDiscover = "yiaddr: %s\nTransaction ID: %d\n";
-    // char *dhcpRequest =  "yiaddr: %s\nTransaction ID: %d\nLifetime: 3600 secs";
+    // Client IP and ID variables
+    char *ip;
+    int id;
+
+    //Client IP Request String Templates
+    char *dhcpDiscover = "yiaddr: %s\nTransaction ID: %d\n";
+    char *dhcpRequest =  "yiaddr: %s\nTransaction ID: %d\nLifetime: 3600 secs";
 
 
 
@@ -67,24 +58,21 @@ int main(int argc, char *argv[])
 
     // dhcpDiscover:
     // Set inital ip to 0.0.0.0
-    // ip = "0.0.0.0";
-    // // Generate Random Number for ID
-    // id = rand() % 100 + 1;
-    // //Populate Discover Template into message
-    // sprintf(message, dhcpDiscover, ip, id);
-    struct DHCPRequest request = {"0.0.0.0", rand() % 100 + 1, -1};
+    ip = "0.0.0.0";
+    // Generate Random Number for ID
+    id = rand() % 100 + 1;
+    //Populate Discover Template into message
+    sprintf(message, dhcpDiscover, ip, id);
+
 
     printf("Client Struct: \n%s\n%d\n", request.yiaddr, request.id);
 
-    // Send message to server
-    // if (sendto(s, message, strlen(message) , 0 , (struct sockaddr *) &si_other, slen)==-1)
-    // {
-    //     die("sendto()");
-    // }
-    if (sendto(s, &request, sizeof(request), 0 , (struct sockaddr *) &si_other, slen)==-1)
+    //Send message to server
+    if (sendto(s, message, strlen(message) , 0 , (struct sockaddr *) &si_other, slen)==-1)
     {
         die("sendto()");
     }
+
 
     //Receiving reply from server and printing it
     //clear the buffer by filling null, it might have previously received data
