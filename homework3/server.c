@@ -95,13 +95,15 @@ int main(int argc, char *argv[])
 
         ip = getIP(&ipCount);
 
-        printf("Chosen IP Address: \n%s\n", ip);
+        printf("\nChosen IP Address: \n%s\n", ip);
 
         //Sending reply to the client
 	      bzero(message, 1024);
         strcpy(message, ip);
+        strcpy(message, '\n');
         strcat(message, clientMessage[1]);
-        strcat(message, "3600");
+        strcpy(message, '\n');
+        strcat(message, "3600\n");
 
 
 
