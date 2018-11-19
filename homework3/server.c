@@ -17,7 +17,7 @@ void die(char *s)
 }
 
 char* getIP(int *count);
-void parseClient(char *message, char *arr);
+void parseClient(char *message, char *arr[]);
 
 int main(int argc, char *argv[])
 {
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     int id;
     // Token variable used when splitting strings
     char *token;
-    char clientMessage[3][32];
+    char *clientMessage[3];
     //Server Response String Template
     char *dhcpRespose = "yiaddr: %s\nTransaction ID: %d\nLifetime: 3600 secs";
 
@@ -151,7 +151,7 @@ char* getIP(int *count)
     return ip; // Return selected IP address
 }
 
-void parseClient(char *message, char *arr)
+void parseClient(char *message, char *arr[])
 {
   char *token = strtok(message, "\n");
   int i = 0;
