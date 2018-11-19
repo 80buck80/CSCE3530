@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
         }
 
         printf("\nClient's message:\n");
-        printf("yiaddr: %s\nTransaction ID: %d\n", clientMessage[0], clientMessage[1]);
+        printf("yiaddr: %s\nTransaction ID: %s\n", clientMessage[0], clientMessage[1]);
 
 
         ip = getIP(&ipCount);
