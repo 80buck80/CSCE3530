@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
     //Set nLifetime
     lifetime = -1;
     //Populate Discover Template into message
-    sprintf(message, dhcpDiscover, ip, id, lifetime);
+    sprintf(message, dhcpRequest, ip, id, lifetime);
 
 
     //Send message to server
