@@ -100,9 +100,9 @@ int main(int argc, char *argv[])
         //Sending reply to the client
 	      bzero(message, 1024);
         strcpy(message, ip);
-        strcpy(message, '\n');
+        strcpy(message, ""\n");
         strcat(message, clientMessage[1]);
-        strcpy(message, '\n');
+        strcpy(message, "\n");
         strcat(message, "3600\n");
 
 
