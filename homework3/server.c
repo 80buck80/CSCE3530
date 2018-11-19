@@ -17,7 +17,7 @@ void die(char *s)
 }
 
 char* getIP(int *count);
-void parseClient(char *message, char *arr[]);
+void parseClient(char *message, char arr[]);
 
 int main(int argc, char *argv[])
 {
@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
 
         //print details of the client/peer and the data received
         //printf("Received packet from %s, port number:%d\n", inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port));
-        parseClient(buf, clientMessage);
+        parseClient(buf, &clientMessage);
 
         printf("\nClient Message:\n");
         for(i = 0; i < 3; i ++)
