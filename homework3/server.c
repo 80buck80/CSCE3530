@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
 
         printf("\nChosen IP Address: \n%s\n", ip);
 
-        //Sending reply to the client
+        //Create reply to the client
 	      bzero(message, 1024);
         strcpy(message, ip);
         strcat(message, "\n");
@@ -104,10 +104,7 @@ int main(int argc, char *argv[])
         strcat(message, "\n");
         strcat(message, "3600\n");
 
-        printf("\nCATED MESSAGE: %s\n", message);
-
-
-
+        //Send reply to client
 	      printf("\nSending Client an IP offer:\n");
         if (sendto(s, message, strlen(message), 0, (struct sockaddr*) &si_other, slen) == -1)
         {
