@@ -70,6 +70,8 @@ int main(int argc, char *argv[])
     //Populate Discover Template into message
     sprintf(message, dhcpRequest, ip, id, lifetime);
 
+    //======================================================================================================
+    //======================================================================================================
 
     //Send message to server
     if (sendto(s, message, strlen(message) , 0 , (struct sockaddr *) &si_other, slen)==-1)
@@ -90,7 +92,7 @@ int main(int argc, char *argv[])
     i = 0;
     while (token != NULL)
     {
-      printf("%s\n", token);
+
       strcpy(serverMessage[i], token);
       i++;
       token = strtok(NULL, "\n");
