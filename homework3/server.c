@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
 
         //print details of the client/peer and the data received
         //printf("Received packet from %s, port number:%d\n", inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port));
-        token = strtok(buff, "\n");
+        token = strtok(buf, "\n");
         i = 0;
         while (token != NULL)
         {
