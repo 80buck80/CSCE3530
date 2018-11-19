@@ -24,13 +24,15 @@ int main(int argc, char *argv[])
     char buf[BUFLEN];
     char message[BUFLEN];
 
-    // Client IP and ID variables
+    // Client IP, ID and lifetime variables
     char *ip;
     int id;
+    int lifetime;
+
 
     //Client IP Request String Templates
-    char *dhcpDiscover = "yiaddr: %s\nTransaction ID: %d\n";
-    char *dhcpRequest =  "yiaddr: %s\nTransaction ID: %d\nLifetime: 3600 secs";
+
+    char *dhcpRequest =  "%s\n%d\n%d";
 
 
 
@@ -61,8 +63,10 @@ int main(int argc, char *argv[])
     ip = "0.0.0.0";
     // Generate Random Number for ID
     id = rand() % 100 + 1;
+    //Set nLifetime
+    lifetime = -1;
     //Populate Discover Template into message
-    sprintf(message, dhcpDiscover, ip, id);
+    sprintf(message, dhcpDiscover, ip, id, lifetime);
 
 
     //Send message to server
