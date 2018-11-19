@@ -73,7 +73,6 @@ int main(int argc, char *argv[])
 
 
         //print details of the client/peer and the data received
-        //printf("Received packet from %s, port number:%d\n", inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port));
         token = strtok(buf, "\n");
         i = 0;
         while (token != NULL)
@@ -85,11 +84,8 @@ int main(int argc, char *argv[])
 
         }
 
-        printf("\nClient Message:\n");
-        for(i = 0; i < 3; i ++)
-        {
-          printf("%s\n", clientMessage[i]);
-        }
+        printf("\nClient's message:\n");
+        printf("yiaddr: %s\nTransaction ID: %d\n", clientMessage[0], clientMessage[1]);
 
 
         ip = getIP(&ipCount);
