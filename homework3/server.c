@@ -65,6 +65,9 @@ int main(int argc, char *argv[])
         printf("Waiting for client's message...\n\n");
         fflush(stdout);
 
+        //======================================================================================================
+        //======================================================================================================
+
         //Receiving data from client
         if ((recv_len = recvfrom(s, buf, BUFLEN, 0, (struct sockaddr *) &si_other, &slen)) == -1)
         {
@@ -84,10 +87,11 @@ int main(int argc, char *argv[])
 
         }
 
-        id = atoi(clientMessage[1]);
         printf("\nClient's message:\n");
         printf("yiaddr: %s\nTransaction ID: %s\n", clientMessage[0], clientMessage[1]);
 
+        //======================================================================================================
+        //======================================================================================================
 
         ip = getIP(&ipCount);
 
@@ -95,11 +99,25 @@ int main(int argc, char *argv[])
 
         //Sending reply to the client
 	      bzero(message, 1024);
-	      printf("Enter server's message:");
-	      gets(message);
+        strcpy(message, ip);
+        strcat(message, clientMessage[1]);
+        strcat(message, "3600");
+
+
+
+	      printf("\nSending Client an IP offer:\n");
         if (sendto(s, message, strlen(message), 0, (struct sockaddr*) &si_other, slen) == -1)
         {
             die("sendto()");
+        }
+
+        //======================================================================================================
+        //======================================================================================================
+
+        //Receiving data from client
+        if ((recv_len = recvfrom(s, buf, BUFLEN, 0, (struct sockaddr *) &si_other, &slen)) == -1)
+        {
+            die("recvfrom()");
         }
     }
 

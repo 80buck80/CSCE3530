@@ -23,6 +23,8 @@ int main(int argc, char *argv[])
     int s, i, slen=sizeof(si_other), portno;
     char buf[BUFLEN];
     char message[BUFLEN];
+    char *token;
+    char serverMessage[3][32];
 
     // Client IP, ID and lifetime variables
     char *ip;
@@ -83,7 +85,20 @@ int main(int argc, char *argv[])
     {
        die("recvfrom()");
     }
-    printf("Server has sent: %s\n", buf);
+
+    token = strtok(buf, "\n");
+    i = 0;
+    while (token != NULL)
+    {
+      printf("%s\n", token);
+      strcpy(serverMessage[i], token);
+      i++;
+      token = strtok(NULL, "\n");
+
+    }
+
+    printf("\nServer IP Offer:\n");
+    printf("yiaddr: %s\nTransaction ID: %s\nLifetime:", serverMessage[0], serverMessage[1], serverMessage[2]);
 
     close(s);
     return 0;
