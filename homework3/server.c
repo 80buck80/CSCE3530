@@ -167,7 +167,7 @@ int main(int argc, char *argv[])
             die("sendto()");
         }
         ipCount--;
-        printf("IP COUNT:%d", ipCount);
+        
     }
 
     close(s);
