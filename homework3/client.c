@@ -38,7 +38,6 @@ int main(int argc, char *argv[])
 
 
 
-
     system("clear");
     printf("...This is UDP client...\n\n");
 
@@ -57,6 +56,7 @@ int main(int argc, char *argv[])
         fprintf(stderr, "inet_aton() failed\n");
         exit(1);
     }
+
 
     printf("Looking for DHCP server...\n\n");
 
@@ -82,6 +82,8 @@ int main(int argc, char *argv[])
         die("sendto()");
     }
 
+    //======================================================================================================
+    //======================================================================================================
 
     //Receiving reply from server and printing it
     //clear the buffer by filling null, it might have previously received data
@@ -104,6 +106,45 @@ int main(int argc, char *argv[])
 
     printf("\nServer IP Offer:\n");
     printf("yiaddr: %s\nTransaction ID: %s\nLifetime: %s\n", serverMessage[0], serverMessage[1], serverMessage[2]);
+
+    //======================================================================================================
+    //======================================================================================================
+
+    id++;
+    sprintf(message, dhcpRequest, serverMessage[0], id, serverMessage[2]);
+
+    //Send message to server
+    if (sendto(s, message, strlen(message) , 0 , (struct sockaddr *) &si_other, slen)==-1)
+    {
+        die("sendto()");
+    }
+
+    //======================================================================================================
+    //======================================================================================================
+
+
+    //Receiving reply from server and printing it
+    //clear the buffer by filling null, it might have previously received data
+    bzero(buf, BUFLEN);
+    if (recvfrom(s, buf, BUFLEN, 0, (struct sockaddr *) &si_other, &slen) == -1)
+    {
+       die("recvfrom()");
+    }
+
+    token = strtok(buf, "\n");
+    i = 0;
+    while (token != NULL)
+    {
+
+      strcpy(serverMessage[i], token);
+      i++;
+      token = strtok(NULL, "\n");
+
+    }
+
+    printf("\nServer IP Offer:\n");
+    printf("yiaddr: %s\nTransaction ID: %s\nLifetime: %s\n", serverMessage[0], serverMessage[1], serverMessage[2]);
+
 
     close(s);
     return 0;
