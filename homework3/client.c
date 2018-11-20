@@ -71,6 +71,7 @@ int main(int argc, char *argv[])
 
 
     //======================================================================================================
+    //DHCP DISCOVER MESSAGE
     //======================================================================================================
 
     sprintf(message, dhcpRequest, ip, id, lifetime);
@@ -83,6 +84,7 @@ int main(int argc, char *argv[])
     }
 
     //======================================================================================================
+    //DHCP OFFER MESSAGE
     //======================================================================================================
 
     //Receiving reply from server and printing it
@@ -108,6 +110,7 @@ int main(int argc, char *argv[])
     printf("yiaddr: %s\nTransaction ID: %s\nLifetime: %s\n", serverMessage[0], serverMessage[1], serverMessage[2]);
 
     //======================================================================================================
+    //DHCP REQUEST MESSAGE
     //======================================================================================================
 
     id++;
@@ -120,6 +123,7 @@ int main(int argc, char *argv[])
     }
 
     //======================================================================================================
+    //DHCP ACK MESSAGE
     //======================================================================================================
 
 
@@ -142,7 +146,7 @@ int main(int argc, char *argv[])
 
     }
 
-    printf("\nServer IP Offer:\n");
+    printf("\nServer ACK message:\n");
     printf("yiaddr: %s\nTransaction ID: %s\nLifetime: %s\n", serverMessage[0], serverMessage[1], serverMessage[2]);
 
 

@@ -66,9 +66,11 @@ int main(int argc, char *argv[])
         fflush(stdout);
 
         //======================================================================================================
+        //DHCP DISCOVER MESSAGE
         //======================================================================================================
 
         //Receiving data from client
+        bzero(buf, BUFLEN);
         if ((recv_len = recvfrom(s, buf, BUFLEN, 0, (struct sockaddr *) &si_other, &slen)) == -1)
         {
             die("recvfrom()");
@@ -90,6 +92,7 @@ int main(int argc, char *argv[])
         printf("yiaddr: %s\nTransaction ID: %s\n", clientMessage[0], clientMessage[1]);
 
         //======================================================================================================
+        //DHCP OFFER MESSAGE
         //======================================================================================================
 
         ip = getIP(&ipCount);
@@ -105,19 +108,56 @@ int main(int argc, char *argv[])
         strcat(message, "3600\n");
 
         //Send reply to client
-	      printf("\nSending Client an IP offer:\n");
+	      printf("\nSending Client an IP offer...\n");
         if (sendto(s, message, strlen(message), 0, (struct sockaddr*) &si_other, slen) == -1)
         {
             die("sendto()");
         }
 
         //======================================================================================================
+        //DHCP REQUEST MESSAGE
         //======================================================================================================
 
+        printf("\nWaiting for Client response...\n");
+
         //Receiving data from client
+        bzero(buf, BUFLEN);
         if ((recv_len = recvfrom(s, buf, BUFLEN, 0, (struct sockaddr *) &si_other, &slen)) == -1)
         {
             die("recvfrom()");
+        }
+
+        //print details of the client/peer and the data received
+        token = strtok(buf, "\n");
+        i = 0;
+        while (token != NULL)
+        {
+          strcpy(clientMessage[i], token);
+          i++;
+          token = strtok(NULL, "\n");
+
+        }
+
+        printf("\nClient's message:\n");
+        printf("yiaddr: %s\nTransaction ID: %s\nLifetime: %s\n", clientMessage[0], clientMessage[1], clientMessage[2]);
+
+        //======================================================================================================
+        //DHCP ACK MESSAGE
+        //======================================================================================================
+
+        //Create reply to the client
+	      bzero(message, 1024);
+        strcpy(message, ip);
+        strcat(message, "\n");
+        strcat(message, clientMessage[1]);
+        strcat(message, "\n");
+        strcat(message, "3600\n");
+
+        //Send reply to client
+	      printf("\nSending Client ACK message...\n");
+        if (sendto(s, message, strlen(message), 0, (struct sockaddr*) &si_other, slen) == -1)
+        {
+            die("sendto()");
         }
     }
 
