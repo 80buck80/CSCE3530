@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 #include <stdlib.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
@@ -56,13 +57,13 @@ int main(int argc, char *argv[])
         fprintf(stderr, "inet_aton() failed\n");
         exit(1);
     }
-
+    srand(time(NULL));
     // dhcpDiscover:
     // Set inital ip to 0.0.0.0
     ip = "0.0.0.0";
     // Generate Random Number for ID
     id = rand() % 100 + 1;
-    printf("\n\nID:%d\n\n", id);
+
     //Set nLifetime
     lifetime = -1;
     //Populate Discover Template into message
