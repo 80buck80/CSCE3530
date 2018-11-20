@@ -112,6 +112,8 @@ int main(int argc, char *argv[])
     //DHCP REQUEST MESSAGE
     //======================================================================================================
 
+    printf("Sending DHCP Request message...\n");
+
     id++;
     sprintf(message, dhcpRequest, serverMessage[0], id, serverMessage[2]);
 

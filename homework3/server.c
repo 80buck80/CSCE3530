@@ -139,7 +139,7 @@ int main(int argc, char *argv[])
         }
 
         printf("\nClient's DHCP request:\n");
-        printf("yiaddr: %s\nTransaction ID: %s\nLifetime: %s\n", clientMessage[0], clientMessage[1], clientMessage[2]);
+        printf("yiaddr: %s\nTransaction ID: %s\nLifetime: %s\n", clientMessage[0], clientMessage[1], "3600");
 
         //======================================================================================================
         //DHCP ACK MESSAGE
