@@ -112,7 +112,7 @@ int main(int argc, char *argv[])
     //DHCP REQUEST MESSAGE
     //======================================================================================================
 
-    printf("Sending DHCP Request message...\n");
+    printf("\nSending DHCP Request message...\n");
 
     id++;
     sprintf(message, dhcpRequest, serverMessage[0], id, serverMessage[2]);
@@ -148,7 +148,7 @@ int main(int argc, char *argv[])
     }
 
     printf("\nServer ACK message:\n");
-    printf("yiaddr: %s\nTransaction ID: %s\nLifetime: %s\n", serverMessage[0], serverMessage[1], serverMessage[2]);
+    printf("yiaddr: %s\nTransaction ID: %s\nLifetime: %s\n\n", serverMessage[0], serverMessage[1], serverMessage[2]);
 
 
     close(s);
