@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
     //keep listening for data
     while(ipCount != 0)
     {
-        printf("Waiting for client's message...\n\n");
+        printf("\nWaiting for new client DHCP Discover message...\n");
         fflush(stdout);
 
         //======================================================================================================
@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
 
         }
 
-        printf("\nClient's message:\n");
+        printf("\nClient's DHCP Discover message:\n");
         printf("yiaddr: %s\nTransaction ID: %s\n", clientMessage[0], clientMessage[1]);
 
         //======================================================================================================
@@ -118,7 +118,7 @@ int main(int argc, char *argv[])
         //DHCP REQUEST MESSAGE
         //======================================================================================================
 
-        printf("\nWaiting for Client response...\n");
+        printf("\nWaiting for Client DHCP request...\n");
 
         //Receiving data from client
         bzero(buf, BUFLEN);
@@ -138,7 +138,7 @@ int main(int argc, char *argv[])
 
         }
 
-        printf("\nClient's message:\n");
+        printf("\nClient's DHCP request:\n");
         printf("yiaddr: %s\nTransaction ID: %s\nLifetime: %s\n", clientMessage[0], clientMessage[1], clientMessage[2]);
 
         //======================================================================================================

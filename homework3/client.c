@@ -57,9 +57,6 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-
-    printf("Looking for DHCP server...\n\n");
-
     // dhcpDiscover:
     // Set inital ip to 0.0.0.0
     ip = "0.0.0.0";
@@ -73,6 +70,8 @@ int main(int argc, char *argv[])
     //======================================================================================================
     //DHCP DISCOVER MESSAGE
     //======================================================================================================
+
+    printf("Sending DHCP Discover message...\n");
 
     sprintf(message, dhcpRequest, ip, id, lifetime);
 
