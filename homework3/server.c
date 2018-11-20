@@ -60,8 +60,9 @@ int main(int argc, char *argv[])
     printf("...This is UDP server...\n\n");
 
     //keep listening for data
-    while(ipCount != 0)
+    while(ipCount > 0)
     {
+
         printf("\nWaiting for new client DHCP Discover message...\n");
         fflush(stdout);
 
@@ -74,6 +75,12 @@ int main(int argc, char *argv[])
         if ((recv_len = recvfrom(s, buf, BUFLEN, 0, (struct sockaddr *) &si_other, &slen)) == -1)
         {
             die("recvfrom()");
+        }
+
+        //Initialize ipArray
+        for(i = 0; i < 10 ; i++)
+        {
+          clientMessage[i] = NULL;
         }
 
 
@@ -159,6 +166,8 @@ int main(int argc, char *argv[])
         {
             die("sendto()");
         }
+
+        printf("IP COUNT:%d", ipCount);
     }
 
     close(s);
