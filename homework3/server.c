@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
         //Initialize ipArray
         for(i = 0; i < 10 ; i++)
         {
-          strcpy(clientMessage[i], NULL);
+          strcpy(clientMessage[i], "");
         }
 
 
