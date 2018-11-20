@@ -62,6 +62,7 @@ int main(int argc, char *argv[])
     ip = "0.0.0.0";
     // Generate Random Number for ID
     id = rand() % 100 + 1;
+    printf("\n\nID:%d\n\n", id);
     //Set nLifetime
     lifetime = -1;
     //Populate Discover Template into message
