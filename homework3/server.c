@@ -166,7 +166,7 @@ int main(int argc, char *argv[])
         {
             die("sendto()");
         }
-
+        ipCount--;
         printf("IP COUNT:%d", ipCount);
     }
 
@@ -214,7 +214,7 @@ char* getIP(int *count)
     //Close file pointer to ip.txt
     fclose(fptr);
 
-    *count--;//Decrement number of ip addresses left
+    //*count--;//Decrement number of ip addresses left
 
     ip = ipArray[0];
 
